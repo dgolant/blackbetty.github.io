@@ -5,21 +5,26 @@ html,
 body
     background-image: url(../_img/bg.jpg)
     background-size: cover
-    width: 100%
-    height: 100%
+    background-attachment: fixed
+    // width: 100%
+    // height: 100%
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
     background-color: #666
     background-position: 0px 0px
     background-repeat: none
 
 #Wrapper
-    position: absolute
+    position: fixed
     top: 0
     left: 0
-
+    bottom: 0
     //screw responsive, this will be same width everywhere
     width: 450px
     min-width: 450px
-    height: 100% !important
+    // height: 100% !important
     margin: 0 0 0 0
     background-color: rgba(255,255,255,0.75)
 
@@ -28,36 +33,34 @@ a
 
 #MainContent
     position: absolute
-    top: 100px
+    top: 150px
+    right: 40px
+    left: 40px
+    bottom: 50px
     width: 329.344px
     font-family: "Trebuchet MS", arial, sans-serif
     color: #333
     line-height: 15px
-    padding-top: 3.125rem
-    padding-right: 2.5rem
-    padding-bottom: 3.125rem
-    padding-left: 2.5rem
-    letter-spacing: -0.075rem
+    letter-spacing: -1.2px
     h1
         color: rgba(136, 136, 136, 1)
         font-family: Arial, Helvetica, sans-serif
-        font-size: 3.125em
+        font-size: 50px
         font-weight: 400
-        width: inherit
     h2
         color: rgba(136, 136, 136, 1)
         font-family: Arial, Helvetica, sans-serif
-        font-size: 1.125em
+        font-size: 18px
         font-weight: 400px
         padding-bottom: 15px
     hr
         color: rgba(136, 136, 136, 1)
-        padding-left: 2.5rem
+        left: 40px
     p
         color: rgba(136, 136, 136, 1)
         font-family: Arial, Helvetica, sans-serif
         line-height: 1.675
-        font-size: 1.125em
+        font-size: 18px
         font-weight: lighter
         padding-bottom: 15px
     .fa
