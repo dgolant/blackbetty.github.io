@@ -5,7 +5,7 @@
 4 verbose stack Error: ENOENT, open '/Users/Dan/Desktop/Code Projects/personalsite/package.json'
 4 verbose stack     at Error (native)
 5 verbose cwd /Users/Dan/Desktop/Code Projects/personalsite
-6 error Darwin 15.3.0
+6 error Darwin 15.5.0
 7 error argv "node" "/usr/local/bin/npm" "start"
 8 error node v0.12.7
 9 error npm  v2.11.3
