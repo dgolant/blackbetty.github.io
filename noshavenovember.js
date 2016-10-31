@@ -1,24 +1,28 @@
 //run immediately
-var imageURLs = fetchImageURLs();
 
 
-function generateDivs(numberToCreate) {
-    for (i = 0; i < numberToCreate; i++) {
+
+function generateDivs(urls) {
+    for (i = 0; i < urls.length; i++) {
         var div = document.createElement("div");
         div.setAttribute('class', 'photoDiv')
+        div.id = "photoDiv"+i;
+        var img = document.createElement("img");
+        img.setAttribute('src',urls[i]);
+        div.appendChild(img);
         document.getElementsByClassName("november")[0].appendChild(div);
     }
 }
 
 window.onload = function() {
-//    generateDivs(imageURLs.length);
+    fetchImageURLs(generateDivs);
 }
 
 
-function fetchImageURLs() {
+function fetchImageURLs(callback) {
     var request = new XMLHttpRequest();
     request.open('GET', 'https://nshavendan.s3.amazonaws.com', true);
-
+``
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
             // Success!
@@ -27,7 +31,12 @@ function fetchImageURLs() {
             data = xmlToJson(xml);
             imageURLArray = createURLS(data.ListBucketResult.Contents);
             console.log(imageURLArray);
-            return (imageURLArray);
+            if(callback){
+                callback(imageURLArray);
+            }
+            else{
+                return(imageURLArray);
+            }
         } else {
             // We reached our target server, but it returned an error
             console.log("We reached our target server, but it returned an error")
@@ -101,4 +110,10 @@ function createURLS(Contents) {
         }
     }
     return urls;
+}
+
+function executeAsynchronously(functions, timeout) {
+  for(var i = 0; i < functions.length; i++) {
+    setTimeout(functions[i], timeout);
+  }
 }
