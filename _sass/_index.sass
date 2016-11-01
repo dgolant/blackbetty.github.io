@@ -8,29 +8,48 @@ body.index
     background-position: 0px 0px
     background-repeat: no-repeat
 
-#ProjectContainer
+#ProjectsContainer
     position: fixed
     left: 450px
     height: 100%
     width: -webkit-calc(100% - 450px);
     width:    -moz-calc(100% - 450px);
     width:         calc(100% - 450px);
-    .ProjectImageContainer
-        position: relative
-        // display: block
-        height: 200px
-        width: 200px
-        overflow: hidden
-        left: 50px
-        top: 50px
-        border-style: solid
-        border-color: white
-        border-width: 10px
-        border-radius: 50%
-        .ProjectImage
-            // position: absolute
-            // top: 0; left: 0; right: 0; bottom: 0;
-            // margin: 0 auto
+    .ProjectContainer
+        height: 400px
+        width: 400px
+        .ProjectImageContainer
+            position: relative
+            // display: block
+            height: 200px
+            width: 200px
+            overflow: hidden
+            top: 40px
+            margin: 0 auto
+            border-style: solid
+            border-color: rgba(244, 244, 244, 0.70)
+            border-width: 10px
+            border-radius: 50%
+            float: top
+            .ProjectImage
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                max-height: 100%;
+        figcaption
+            position: relative
+            background-color: rgba(244, 244, 244, 0.70);
+            color: #353535;
+            top: 75px
+            width: 200px;
+            height: 20px;
+            text-align: center;
+            padding-top: 5px;
+            border-radius: 10px
+            max-height: 100%;
+            margin: 0 auto
+            top: 50px
 
 
 #Wrapper

@@ -7,9 +7,16 @@ function generateDivs(urls) {
         var div = document.createElement("div");
         div.setAttribute('class', 'photoDiv')
         div.id = "photoDiv"+i;
+
         var img = document.createElement("img");
         img.setAttribute('src',urls[i]);
+        img.setAttribute('class','dayImage');
+        img.setAttribute('title', urls[i]);
+
+        var caption = document.createElement("figcaption");
+        caption.innerHTML = "Day "+(i+1);
         div.appendChild(img);
+        div.appendChild(caption);
         document.getElementsByClassName("november")[0].appendChild(div);
     }
 }
@@ -29,7 +36,13 @@ function fetchImageURLs(callback) {
             var parser = new DOMParser();
             var xml = parser.parseFromString(request.responseText, "text/xml");
             data = xmlToJson(xml);
-            imageURLArray = createURLS(data.ListBucketResult.Contents);
+            var imageURLArray;
+            if(!isArray(data.ListBucketResult.Contents)){
+            	tempArray = [data.ListBucketResult.Contents];
+            	imageURLArray = createURLS(tempArray);
+            } else{
+            	imageURLArray = createURLS(data.ListBucketResult.Contents);
+            }
             console.log(imageURLArray);
             if(callback){
                 callback(imageURLArray);
@@ -93,11 +106,13 @@ function xmlToJson(xml) {
 
 function createURLS(Contents) {
     var urls = [];
-    for (i = 0; i < Contents.length; i++) {
+    for (i = 0; i < Contents.length || i < 1; i++) {
         //Check to make sure we're dealing with a file, not a folder (size = 0 or name contains a /)
         if (Contents[i] && Contents[i].Size != 0 && Contents[i].Key['#text'] && !((Contents[i].Key['#text']).includes("/"))) {
             name = (Contents[i].Key['#text']);
+            console.log('name'+name);
             if (name.includes(".jpg") || name.includes(".png")) {
+            	console.log('hit');
                 if (name.includes(" ")) {
                     name = name.split(' ').join('+');
                 }
@@ -112,8 +127,6 @@ function createURLS(Contents) {
     return urls;
 }
 
-function executeAsynchronously(functions, timeout) {
-  for(var i = 0; i < functions.length; i++) {
-    setTimeout(functions[i], timeout);
-  }
+function isArray(what) {
+    return Object.prototype.toString.call(what) === '[object Array]';
 }
