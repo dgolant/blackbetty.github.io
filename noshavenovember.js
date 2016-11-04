@@ -18,6 +18,9 @@ function generateDivs(urls) {
         div.appendChild(img);
         div.appendChild(caption);
         document.getElementsByClassName("november")[0].appendChild(div);
+        document.getElementById("photoDiv"+i).addEventListener('click', function(e){
+            zoomPhoto(e);
+        });
     }
 }
 
@@ -112,7 +115,6 @@ function createURLS(Contents) {
             name = (Contents[i].Key['#text']);
             console.log('name'+name);
             if (name.includes(".jpg") || name.includes(".png")) {
-            	console.log('hit');
                 if (name.includes(" ")) {
                     name = name.split(' ').join('+');
                 }
@@ -130,3 +132,9 @@ function createURLS(Contents) {
 function isArray(what) {
     return Object.prototype.toString.call(what) === '[object Array]';
 }
+
+
+function zoomPhoto(event){
+    // event.currentTarget.style.backgroundColor = "red";
+}
+
