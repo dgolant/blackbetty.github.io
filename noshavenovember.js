@@ -9,15 +9,23 @@ function generateDivs(urls) {
         div.id = "photoDiv"+i;
 
         var img = document.createElement("img");
+        var caption = document.createElement("figcaption");
+        var photoWrapperDiv = document.createElement("div");
+        photoWrapperDiv.setAttribute('class','photoWrapperDiv');
+        photoWrapperDiv.id = 'photoWrapperDiv'+i;
         img.setAttribute('src',urls[i]);
         img.setAttribute('class','dayImage');
         img.setAttribute('title', urls[i]);
 
-        var caption = document.createElement("figcaption");
+
         caption.innerHTML = "Day "+(i+1);
-        div.appendChild(img);
-        div.appendChild(caption);
-        document.getElementsByClassName("november")[0].appendChild(div);
+        photoWrapperDiv.appendChild(img);
+        photoWrapperDiv.appendChild(caption);
+        div.appendChild(photoWrapperDiv);
+
+
+
+        document.getElementsByClassName("gallery")[0].appendChild(div);
         document.getElementById("photoDiv"+i).addEventListener('click', function(e){
             zoomPhoto(e);
         });
@@ -32,7 +40,6 @@ window.onload = function() {
 function fetchImageURLs(callback) {
     var request = new XMLHttpRequest();
     request.open('GET', 'https://nshavendan.s3.amazonaws.com', true);
-``
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
             // Success!
@@ -46,7 +53,6 @@ function fetchImageURLs(callback) {
             } else{
             	imageURLArray = createURLS(data.ListBucketResult.Contents);
             }
-            console.log(imageURLArray);
             if(callback){
                 callback(imageURLArray);
             }
@@ -113,7 +119,6 @@ function createURLS(Contents) {
         //Check to make sure we're dealing with a file, not a folder (size = 0 or name contains a /)
         if (Contents[i] && Contents[i].Size != 0 && Contents[i].Key['#text'] && !((Contents[i].Key['#text']).includes("/"))) {
             name = (Contents[i].Key['#text']);
-            console.log('name'+name);
             if (name.includes(".jpg") || name.includes(".png")) {
                 if (name.includes(" ")) {
                     name = name.split(' ').join('+');
@@ -135,6 +140,11 @@ function isArray(what) {
 
 
 function zoomPhoto(event){
-    // event.currentTarget.style.backgroundColor = "red";
+    console.log(event.currentTarget);
+    if(event.currentTarget.classList.contains('zoomed')){
+        event.currentTarget.classList.remove('zoomed');
+    } else {
+        event.currentTarget.classList.add('zoomed');
+    }
 }
 
