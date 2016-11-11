@@ -6,19 +6,19 @@ function generateDivs(urls) {
     for (i = 0; i < urls.length; i++) {
         var div = document.createElement("div");
         div.setAttribute('class', 'photoDiv')
-        div.id = "photoDiv"+i;
+        div.id = "photoDiv" + i;
 
         var img = document.createElement("img");
         var caption = document.createElement("figcaption");
         var photoWrapperDiv = document.createElement("div");
-        photoWrapperDiv.setAttribute('class','photoWrapperDiv');
-        photoWrapperDiv.id = 'photoWrapperDiv'+i;
-        img.setAttribute('src',urls[i]);
-        img.setAttribute('class','dayImage');
+        photoWrapperDiv.setAttribute('class', 'photoWrapperDiv');
+        photoWrapperDiv.id = 'photoWrapperDiv' + i;
+        img.setAttribute('src', urls[i]);
+        img.setAttribute('class', 'dayImage');
         img.setAttribute('title', urls[i]);
 
 
-        caption.innerHTML = "Day "+(i+1);
+        caption.innerHTML = "Day " + (i + 1);
         photoWrapperDiv.appendChild(img);
         photoWrapperDiv.appendChild(caption);
         div.appendChild(photoWrapperDiv);
@@ -26,7 +26,7 @@ function generateDivs(urls) {
 
 
         document.getElementsByClassName("gallery")[0].appendChild(div);
-        document.getElementById("photoDiv"+i).addEventListener('click', function(e){
+        document.getElementById("photoDiv" + i).addEventListener('click', function(e) {
             zoomPhoto(e);
         });
     }
@@ -47,17 +47,16 @@ function fetchImageURLs(callback) {
             var xml = parser.parseFromString(request.responseText, "text/xml");
             data = xmlToJson(xml);
             var imageURLArray;
-            if(!isArray(data.ListBucketResult.Contents)){
-            	tempArray = [data.ListBucketResult.Contents];
-            	imageURLArray = createURLS(tempArray);
-            } else{
-            	imageURLArray = createURLS(data.ListBucketResult.Contents);
+            if (!isArray(data.ListBucketResult.Contents)) {
+                tempArray = [data.ListBucketResult.Contents];
+                imageURLArray = createURLS(tempArray);
+            } else {
+                imageURLArray = createURLS(data.ListBucketResult.Contents);
             }
-            if(callback){
+            if (callback) {
                 callback(imageURLArray);
-            }
-            else{
-                return(imageURLArray);
+            } else {
+                return (imageURLArray);
             }
         } else {
             // We reached our target server, but it returned an error
@@ -139,12 +138,15 @@ function isArray(what) {
 }
 
 
-function zoomPhoto(event){
+function zoomPhoto(event) {
     console.log(event.currentTarget);
-    if(event.currentTarget.classList.contains('zoomed')){
+    if (event.currentTarget.classList.contains('zoomed')) {
         event.currentTarget.classList.remove('zoomed');
+        event.currentTarget.children[0].children[0].style.maxWidth = "";
+        event.currentTarget.children[0].children[0].style.maxHeight = "";
     } else {
         event.currentTarget.classList.add('zoomed');
+        event.currentTarget.children[0].children[0].style.maxWidth = "100vw";
+        event.currentTarget.children[0].children[0].style.maxHeight = "80vh";
     }
 }
-
