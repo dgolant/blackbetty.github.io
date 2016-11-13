@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,6 +34,7 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="apple-touch-icon" href="_img/meta/apl-57.png" type="image/png" sizes="57x57" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
     <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-57.png" type="image/png" sizes="57x57" />
     <link rel="apple-touch-icon" href="_img/meta/apl-72.png" type="image/png" sizes="72x72" />
     <link rel="apple-touch-icon-precomposed" href="_img/meta/apl-72.png" type="image/png" sizes="72x72" />
@@ -50,8 +51,8 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="index.js">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="noshavenovember.js">
     if (typeof jQuery == 'undefined') {
         document.write(unescape("%3Cscript src='_scripts/jquery-2.0.3.min.js' type='text/javascript'%3E%3C/script%3E"));
     }
@@ -59,46 +60,28 @@
     <!-- Load local jQuery if Google CDN is unreachable -->
 </head>
 
-<body class="index">
-    <div id="Wrapper">
-        <div id="MainContent">
-            <h1>Daniel Golant</h1>
-            <h2>Software Developer</h2>
-            <hr>
-            <p>Hi, my name is Daniel. I am a Software Developer and recent graduate of Purdue University.</p>
-            <p> My technology interests include mobile development, the internet of things, the connected self, and artificial intelligence.</p>
-            <p> My interests outside of technology include live music, photography, and design.</p>
-            <p> Feel free to connect with me elsewhere, or check out some of my projects!</p>
-            <a href="http://www.facebook.com/dangolant">
-                <i class="fa fa-facebook" aria-hidden="true" a href="www.facebook.com/dangolant"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/daniel-golant-a9b45789">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="http://www.github.com/blackbetty">
-                <i class="fa fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="mailto:dgolant@gmail.com">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-            </a>
-            <br />
-            <br />
-        </div>
-        <!-- end MainContent -->
-    </div>
-    <div id="ProjectsContainer">
-        <div class="ProjectContainer">
-            <div class="ProjectImageContainer">
-                <a href="noshavenovember.html">
-                    <img src="https://s3.amazonaws.com/nshavendan/nov12016.png" class="ProjectImage" alt="No Shave Project">
-                </a>
+<body class="november">
+    <div class="header">
+        <a href="index.htm" class="backButton">
+            < Back</a>
+                <div class="novemberTitle">No Shave November</div>
+    </div class="header">
+    <div class="container">
+        <div class="sidebar">
+            <div class="blurb">
+                <h1>Hey!</h1>
+                <p>Welcome to my No Shave November Page!</p>
+                <p> This year, I've decided to try and participate in No Shave November. </p>
+                <p> To give myself some reinforcement, I decided to post all my progress publicly on my site, daily.</p>
+                <p> Feel free to come back occasionally and check in, and look out for updates to the page itself, it's definitely a work in progress! </p>
+                <p> My company has a team going on Movember.com, if you'd like you can donate to our effort, below.</p>
+                <p class="donateButton">
+                    <a href="http://mobro.co/13444254">Donate!</a>
+                </p>
             </div>
-            <a href="noshavenovember.html">
-                <figcaption>My No Shave November</figcaption>
-            </a>
         </div>
+        <div class="gallery"></div>
     </div>
-    <!-- end Wrapper -->
     <script type="text/javascript" src="_scripts/main.js"></script>
 </body>
 
