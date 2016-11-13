@@ -154,7 +154,6 @@ function isArray(what) {
 
 
 function zoomPhoto(event) {
-    console.log(event.currentTarget);
     if (event.currentTarget.classList.contains('zoomed')) {
         event.currentTarget.classList.remove('zoomed');
     } else {
