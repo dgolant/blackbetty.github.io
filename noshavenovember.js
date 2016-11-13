@@ -51,7 +51,9 @@ function fetchImageURLs(callback) {
                 tempArray = [data.ListBucketResult.Contents];
                 imageURLArray = createURLS(tempArray);
             } else {
-                imageURLArray = createURLS(data.ListBucketResult.Contents);
+                var sortedArray = sortPhotos(data.ListBucketResult.Contents);
+                console.log(sortedArray);
+                imageURLArray = createURLS(sortedArray);
             }
             if (callback) {
                 callback(imageURLArray);
@@ -73,6 +75,18 @@ function fetchImageURLs(callback) {
     request.send();
 }
 
+
+function sortPhotos(contents) {
+    return contents.sort(function(a, b) {
+        a.ordinal = getOrdinal(a);
+        b.ordinal = getOrdinal(b);
+        return a.ordinal - b.ordinal;
+    });
+}
+
+function getOrdinal(object) {
+    return object.Key["#text"].slice(object.Key["#text"].indexOf('v')+1, object.Key["#text"].length-8);
+}
 
 function xmlToJson(xml) {
     //Props tp David Walsh
@@ -138,15 +152,12 @@ function isArray(what) {
 }
 
 
+
 function zoomPhoto(event) {
     console.log(event.currentTarget);
     if (event.currentTarget.classList.contains('zoomed')) {
         event.currentTarget.classList.remove('zoomed');
-        event.currentTarget.children[0].children[0].style.maxWidth = "";
-        event.currentTarget.children[0].children[0].style.maxHeight = "";
     } else {
         event.currentTarget.classList.add('zoomed');
-        event.currentTarget.children[0].children[0].style.maxWidth = "100vw";
-        event.currentTarget.children[0].children[0].style.maxHeight = "80vh";
     }
 }
