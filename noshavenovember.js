@@ -1,7 +1,20 @@
-//run immediately
+//lifecycle
+var body;
+var removeLoading = function() {
+    console.log(body);
+    console.log("Called!");
+    setTimeout(function() {
+        body.className = body.className.replace(/loading/, '');
+    }, 3000);
+};
+
+window.onload = function() {
+    body = document.getElementsByTagName('body')[0];
+    fetchImageURLs(generateDivs);
+}
 
 
-
+//helper
 function generateDivs(urls) {
     for (i = 0; i < urls.length; i++) {
         var div = document.createElement("div");
@@ -30,11 +43,9 @@ function generateDivs(urls) {
             zoomPhoto(e);
         });
     }
+    removeLoading();
 }
 
-window.onload = function() {
-    fetchImageURLs(generateDivs);
-}
 
 
 function fetchImageURLs(callback) {
@@ -52,7 +63,6 @@ function fetchImageURLs(callback) {
                 imageURLArray = createURLS(tempArray);
             } else {
                 var sortedArray = sortPhotos(data.ListBucketResult.Contents);
-                console.log(sortedArray);
                 imageURLArray = createURLS(sortedArray);
             }
             if (callback) {
@@ -63,7 +73,6 @@ function fetchImageURLs(callback) {
         } else {
             // We reached our target server, but it returned an error
             console.log("We reached our target server, but it returned an error")
-
         }
     };
 
@@ -71,7 +80,6 @@ function fetchImageURLs(callback) {
         // There was a connection error of some sort
         console.log("COnnection error")
     };
-
     request.send();
 }
 
@@ -85,7 +93,7 @@ function sortPhotos(contents) {
 }
 
 function getOrdinal(object) {
-    return object.Key["#text"].slice(object.Key["#text"].indexOf('v')+1, object.Key["#text"].length-8);
+    return object.Key["#text"].slice(object.Key["#text"].indexOf('v') + 1, object.Key["#text"].length - 8);
 }
 
 function xmlToJson(xml) {
