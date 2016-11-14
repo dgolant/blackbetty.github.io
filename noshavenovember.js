@@ -1,8 +1,6 @@
 //lifecycle
 var body;
 var removeLoading = function() {
-    console.log(body);
-    console.log("Called!");
     setTimeout(function() {
         body.className = body.className.replace(/loading/, '');
     }, 3000);
