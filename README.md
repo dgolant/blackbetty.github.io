@@ -1,5 +1,15 @@
 #NOTES
 
+For local development, I prefer a minimalist setup. Run:
+
+```
+npm i -g live-server
+```
+
+and then run `live-server` in the project root.
+
+This project is forked from TJW_Boilerplate, and it's documentation is reproduced below. 
+
 This document is meant to explain all parts of this boilerplate. It is based, in part, on the HTML5 Boilerplate, however I've altered it enough to call it my own, and include all the tools I routinely use on websites. I intend on keep this up to date as I add more items to my expanding toolkit, and retire older ones of lesser value.
 
 The boilerplate page can be viewed live here:
