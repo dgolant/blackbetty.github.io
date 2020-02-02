@@ -76,7 +76,7 @@ function fetchImageURLs(callback) {
 
     request.onerror = function() {
         // There was a connection error of some sort
-        console.log("COnnection error")
+        console.log("Connection error")
     };
     request.send();
 }
@@ -142,7 +142,7 @@ function createURLS(Contents) {
                 if (name.includes(" ")) {
                     name = name.split(' ').join('+');
                 }
-                urls.push("https://s3.amazonaws.com/nshavendan/" + name);
+                urls.push("https://img.gs/nghbswlcvl/full/https://s3.amazonaws.com/nshavendan/" + name);
             } else {
                 console.log("Not a png or jpg");
             }
@@ -189,5 +189,4 @@ function arrowPressed(indexShift) {
         document.getElementsByClassName('zoomed')[0].classList.remove('zoomed');
         document.getElementById('photoDiv' + newZoomedDivId).classList.add('zoomed');
     }
-
 }
