@@ -2,7 +2,7 @@
 var body;
 var removeLoading = function() {
     setTimeout(function() {
-        body.className = body.className.replace(/loading/, '');
+        body.className = body.className.replace(/ loading/, '');
     }, 3000);
 };
 
@@ -76,7 +76,7 @@ function fetchImageURLs(callback) {
 
     request.onerror = function() {
         // There was a connection error of some sort
-        console.log("COnnection error")
+        console.log("Connection error")
     };
     request.send();
 }
@@ -142,7 +142,7 @@ function createURLS(Contents) {
                 if (name.includes(" ")) {
                     name = name.split(' ').join('+');
                 }
-                urls.push("https://s3.amazonaws.com/nshavendan/" + name);
+                urls.push("https://img.gs/nghbswlcvl/full/https://s3.amazonaws.com/nshavendan/" + name);
             } else {
                 console.log("Not a png or jpg");
             }
@@ -158,11 +158,35 @@ function isArray(what) {
 }
 
 
-
+// Event fucntions
 function zoomPhoto(event) {
     if (event.currentTarget.classList.contains('zoomed')) {
         event.currentTarget.classList.remove('zoomed');
     } else {
         event.currentTarget.classList.add('zoomed');
+    }
+}
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    switch (evt.keyCode) {
+        case 37:
+            arrowPressed(-1);
+            break;
+        case 39:
+            arrowPressed(+1);
+            break;
+    }
+};
+
+function arrowPressed(indexShift) {
+    var galleryLength = parseInt(document.getElementsByClassName('gallery')[0].children.length);
+    var currentZoomedDivId = parseInt(document.getElementsByClassName('zoomed')[0].id.slice(8));
+    if ((indexShift < 0 && currentZoomedDivId > 0) || (indexShift > 0 && currentZoomedDivId < galleryLength-1)) {
+        console.log('currentZoomedDivId: ' + currentZoomedDivId);
+        var newZoomedDivId = currentZoomedDivId + indexShift;
+        console.log('newZoomedDivId: ' + newZoomedDivId);
+        document.getElementsByClassName('zoomed')[0].classList.remove('zoomed');
+        document.getElementById('photoDiv' + newZoomedDivId).classList.add('zoomed');
     }
 }

@@ -1,2 +1,36 @@
 
 // The main document, every page on the site refers to this basic document
+$main-font: monospace
+$mobile-font-color : rgba(100, 100, 100, 1)
+$mobile-wrapper-height : 600px
+$dark-purple: #3b0a65
+// $light-purple: #c298e6
+$highlight-color: #f6044794
+$white: rgb(255, 255, 255)
+
+
+a
+    text-decoration: none
+
+.link
+    color: $dark-purple
+    font-weight: 600
+.highlight-link
+    position: relative
+    z-index: 1
+    &::after
+        background-color: $highlight-color
+        bottom: 0
+        content: ' '
+        display: block
+        height: 50%
+        left: 7px
+        opacity: .5
+        position: absolute
+        transition: all .15s ease-in-out
+        width: calc(100%)
+        z-index: -1
+    &:hover::after
+        left: -7.5px
+        opacity: 1
+        width: calc(100% + 15px)
