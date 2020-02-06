@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿---
+---
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -51,10 +53,7 @@
         document.write(unescape("%3Cscript src='_scripts/jquery-2.0.3.min.js' type='text/javascript'%3E%3C/script%3E"));
     }
     </script>
-    <script type="text/javascript">
-        $(function(){ $("pixel").load("head.html") });
-    </script>
-    <pixel />
+    {% include matomo.html %}
 </head>
 
 <body class="index">
