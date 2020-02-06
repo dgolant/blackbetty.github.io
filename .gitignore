@@ -12,6 +12,10 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# Folders 
+.jekyll-cache/
+_site/
+
 # Mac crap
 .DS_Store
 
