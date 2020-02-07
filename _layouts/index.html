@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="_style/style.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="index.js">
     if (typeof jQuery == 'undefined') {
         document.write(unescape("%3Cscript src='_scripts/jquery-2.0.3.min.js' type='text/javascript'%3E%3C/script%3E"));
@@ -57,12 +58,7 @@
 <body class="index">
     <div id="Wrapper">
         <div id="MainContent">
-            <h1>Daniel Golant</h1>
-            <hr>
-            <p>Hi, my name is Dan. I'm an NYC-based Software Engineer currently working at <a href="https://better.com" class="link highlight-link">Better Mortgage</a>.</p>
-            <p> My interests gravitate towards the intersection of technology, politics, and art.</p>
-            <p>Feel free to check out some of my <a href="" class="link highlight-link">writing</a> or <a href="./content/projects/index.html" class="link highlight-link">projects</a>.</p>
-            <p>If you're interested in getting in touch, these are some places I am present:</p>
+            {{ content }}
             <a href="http://www.twitter.com/dangolant">
                 <i class="fa fa-twitter" aria-hidden="true" a href="www.twitter.com/dangolant"></i>
             </a>
