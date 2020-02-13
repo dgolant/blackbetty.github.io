@@ -22,10 +22,6 @@ In regards to specific files, either they are mentioned below, or they are alrea
 
 This folder should contain all of the content that is used for the creation of the website, but isn't a part of the final product. For example, .psd files, images too large for use on the web, unedited photos, editable logo files, etc.
 
-##_img Folder
-
-This folder holds all graphic elements that are not photos. blank.gif is a 1px by 1px transparent image. It comes in handy on occassion.
-
 ##_sass Folder
 
 Contains all the .scss and .sass files that make up the CSS for the site. Use compass installed in Ruby, or Scout-App to process these. The style.scss file pulls in all other sass documents in to one.
